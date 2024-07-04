@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import axios from "axios";
 import { apikey } from "../Utils/Constants";
+import { useDispatch } from "react-redux";
+import { addNowPlayingMovies } from "../Utils/moviesslice";
 
 const Browse = () => {
   const [data, setData] = useState([]);
+  const dispatch = useDispatch();
 
   const fetchletestmovies = () => {
     axios
@@ -14,7 +17,7 @@ const Browse = () => {
       )
       .then((response) => {
         console.log(response?.data?.results);
-        setData(response?.data?.results[0]?.title);
+        dispatch(addNowPlayingMovies(response?.data?.results));
       })
       .catch((error) => {
         console.log("error was found", error);
