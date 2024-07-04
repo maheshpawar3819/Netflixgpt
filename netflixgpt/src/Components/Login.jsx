@@ -53,9 +53,9 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <div className="absolute">
-        <img src={logoheader} alt="background image" />
+        <img src={logoheader} alt="background" />
       </div>
       <form
         className="bg-black relative p-12 w-3/12 mx-auto top-44 offset rounded-sm bg-opacity-85"
