@@ -10,6 +10,15 @@
         -Firebase Setup
         <!-- -Deploying our app to porduction -->
         -Create SignUp User Account
+        <!-- this part is painding because some issue -->
+        <!-- -Impliment Sign user api
+        -Create Redux Store with useSlice
+        -Implimented Sign out
+        -Update Profile
+        -Bugfix:Sign up user displayName and profile picture update
+        -Bugfix:if the user is not logged in Redirect/browse to login Page and vice-versa
+        -Unsubscribed   to the onAuthStatechanged  callback
+        -add hardcoaded values to the constants file -->
 
 # Features
 
