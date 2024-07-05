@@ -1,15 +1,29 @@
-import React, { useState } from "react";
 import Header from "./Header";
 import useNowplayingmovies from "../Hooks/useNowplayingmoves";
+import Maincontainerb from "./Maincontainerb";
+import Secondarycontainerb from "./Secondarycontainerb";
 const Browse = () => {
-  const [data, setData] = useState([]);
-
   useNowplayingmovies();
 
   return (
     <div>
       <div>
         <Header />
+        <Maincontainerb />
+        <Secondarycontainerb />
+        {/* {
+        
+        Plan:
+            this page was devided into two sections 
+      Mainconstainer:
+                     section 1-
+                               -video background
+                               -video title
+                     section 2-
+                                -movies linst
+                                -cards
+
+        } */}
       </div>
     </div>
   );
