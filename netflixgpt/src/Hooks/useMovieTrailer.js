@@ -19,7 +19,7 @@ const useMovieTrailer = (movieid) => {
           return video.type === "Trailer";
         });
         const trailer = filterdata.length ? filterdata[0] : data[0];
-        console.log(trailer);
+        // console.log(trailer);
         dispatch(addTrailerVideo(trailer));
       })
       .catch((error) => {
