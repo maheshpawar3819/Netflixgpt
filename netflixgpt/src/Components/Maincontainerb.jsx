@@ -8,14 +8,16 @@ const Maincontainerb = () => {
     return store.movies?.addNowPlayingMovies;
   });
 
-  if (movies === null) return;
+  if (movies === null) return; //either you can use if(!movies) retun; it was also fine
 
   const mainMovie = movies[0];
   console.log(mainMovie);
 
+  const { original_title, overview } = mainMovie;
+
   return (
     <div>
-      <Videotitle />
+      <Videotitle title={original_title} overview={overview} />
       <Videobackground />
     </div>
   );

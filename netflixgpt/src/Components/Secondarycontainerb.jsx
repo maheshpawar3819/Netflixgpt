@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const Secondarycontainerb = () => {
-  return (
-    <div>
-      secondary
-    </div>
-  )
-}
+  return <div></div>;
+};
 
-export default Secondarycontainerb
+export default Secondarycontainerb;
