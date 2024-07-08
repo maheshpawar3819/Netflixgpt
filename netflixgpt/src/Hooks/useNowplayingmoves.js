@@ -14,7 +14,7 @@ const useNowplayingmovies = () => {
         apikey
       )
       .then((response) => {
-        console.log(response?.data?.results);
+        // console.log(response?.data?.results);
         dispatch(addNowPlayingMovies(response?.data?.results));
       })
       .catch((error) => {

@@ -11,14 +11,14 @@ const Maincontainerb = () => {
   if (movies === null) return; //either you can use if(!movies) retun; it was also fine
 
   const mainMovie = movies[0];
-  console.log(mainMovie);
+  // console.log(mainMovie);
 
-  const { original_title, overview } = mainMovie;
+  const { original_title, overview, id } = mainMovie;
 
   return (
     <div>
       <Videotitle title={original_title} overview={overview} />
-      <Videobackground />
+      <Videobackground moiveid={id} />
     </div>
   );
 };
