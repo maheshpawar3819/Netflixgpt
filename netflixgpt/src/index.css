@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* styles.css */
+.movie-list::-webkit-scrollbar {
+    display: none;
+}
