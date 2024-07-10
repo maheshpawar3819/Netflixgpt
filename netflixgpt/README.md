@@ -36,7 +36,6 @@
         -Make the browse page amazing with Tailwind css
         -add more custom hooks (usepopular,useToprated,useUpcoming)
 
-
 # Features
 
     -Login/Sign Up
