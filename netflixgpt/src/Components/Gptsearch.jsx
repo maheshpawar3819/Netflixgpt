@@ -1,11 +1,17 @@
-import React from 'react'
-
+import React from "react";
+import Gptsearchbar from "./Gptsearchbar";
+import Gptmoviesuggestions from "./Gptmoviesuggestions";
+import { logoheader } from "../Utils/logoimg";
 const Gptsearch = () => {
   return (
     <div>
-      <h1>gpt search</h1>
+      <div className="absolute -z-10">
+        <img src={logoheader} alt="background" />
+      </div>
+      <Gptsearchbar />
+      <Gptmoviesuggestions />
     </div>
-  )
-}
+  );
+};
 
-export default Gptsearch
+export default Gptsearch;
