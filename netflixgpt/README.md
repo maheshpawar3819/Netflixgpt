@@ -35,6 +35,9 @@
         -TNDB Image CDN url
         -Make the browse page amazing with Tailwind css
         -add more custom hooks (usepopular,useToprated,useUpcoming)
+        -GPT search page
+        -Gpt search bar
+        -Add Multi language feature in search page
 
 # Features
 
