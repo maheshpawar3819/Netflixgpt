@@ -21,8 +21,8 @@ const Login = () => {
       password.current.value
       //   name.current.value
     );
-    setErrormsg(msg);
-    console.log(msg);
+    // setErrormsg(msg);
+    // console.log(msg);
     if (msg) return; //if the user id and password was not valid dont go forword
     //other wise go forword
     //sign in sign up logic

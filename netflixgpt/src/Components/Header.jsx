@@ -3,18 +3,28 @@ import { netflixlogo } from "../Utils/logoimg";
 import { useDispatch } from "react-redux";
 import { toggleGptsearchview } from "../Utils/gptslice";
 import { Supportedlanguages } from "../Utils/Constants";
+import { changeLanguage } from "../Utils/configslice";
 const Header = () => {
   const dispatch = useDispatch();
 
   const handleGptsearchclick = () => {
     dispatch(toggleGptsearchview());
   };
+
+  const handleLanguagechange = (event) => {
+    // console.log(event.target.value);
+    dispatch(changeLanguage(event.target.value));
+  };
+
   return (
     <div className="absolute flex px-8 py-5 top-0 bottom-0 bg-gradient-to-b from-black w-full z-30 h-20 justify-between">
       <img src={netflixlogo} className="w-32" alt="" />
 
       <div>
-        <select className="bg-black hover:bg-gray-700 font-bold p-2 mr-10 rounded-md text-white cursor-pointer">
+        <select
+          className="bg-black hover:bg-gray-700 font-bold p-2 mr-10 rounded-md text-white cursor-pointer"
+          onClick={handleLanguagechange}
+        >
           {Supportedlanguages.map((language) => {
             return (
               <option value={language.identifier} key={language.identifier}>
