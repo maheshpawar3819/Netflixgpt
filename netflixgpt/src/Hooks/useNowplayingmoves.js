@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { addNowPlayingMovies } from "../Utils/moviesslice";
@@ -6,6 +6,10 @@ import { apikey } from "../Utils/Constants";
 
 const useNowplayingmovies = () => {
   const dispatch = useDispatch();
+
+  const nowplayingmovies = useSelector((store) => {
+    return store.movies.addNowPlayingMovies;
+  });
 
   const fetchletestmovies = () => {
     axios
@@ -23,7 +27,7 @@ const useNowplayingmovies = () => {
   };
 
   useEffect(() => {
-    fetchletestmovies();
+    !nowplayingmovies && fetchletestmovies();
   }, []);
 };
 

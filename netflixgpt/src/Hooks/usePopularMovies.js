@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { addPopularMovies } from "../Utils/moviesslice";
@@ -6,6 +6,10 @@ import { apikey } from "../Utils/Constants";
 
 const usePopularMovies = () => {
   const dispatch = useDispatch();
+
+  const popularmovies = useSelector((store) => {
+    return store.movies.addPopularMovies;
+  });
 
   const fetchletestmovies = () => {
     axios
@@ -23,7 +27,7 @@ const usePopularMovies = () => {
   };
 
   useEffect(() => {
-    fetchletestmovies();
+    !popularmovies && fetchletestmovies();
   }, []);
 };
 

@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { addUpcoming } from "../Utils/moviesslice";
@@ -6,6 +6,10 @@ import { apikey } from "../Utils/Constants";
 
 const useUpcoming = () => {
   const dispatch = useDispatch();
+
+  const upcomingmovies = useSelector((store) => {
+    return store.movies.addUpcoming;
+  });
 
   const fetchletestmovies = () => {
     axios
@@ -23,7 +27,7 @@ const useUpcoming = () => {
   };
 
   useEffect(() => {
-    fetchletestmovies();
+    !upcomingmovies && fetchletestmovies();
   }, []);
 };
 
