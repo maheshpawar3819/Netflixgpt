@@ -1,10 +1,14 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect } from "react";
 import { apikey } from "../Utils/Constants";
 import { addTrailerVideo } from "../Utils/moviesslice";
 const useMovieTrailer = (movieid) => {
   const dispatch = useDispatch();
+
+  const movietrailer = useSelector((store) => {
+    return store.movies.trailerVideo;
+  });
 
   const getMovieVideos = () => {
     axios
@@ -28,7 +32,7 @@ const useMovieTrailer = (movieid) => {
   };
 
   useEffect(() => {
-    getMovieVideos();
+    !movietrailer && getMovieVideos();
   }, []);
 };
 
