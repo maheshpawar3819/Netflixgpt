@@ -1,18 +1,24 @@
 import React, { useRef } from "react";
 import lang from "../Utils/languageconstants";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useSearchMovies from "../Hooks/useSearchMovies";
-
+import { addquery } from "../Utils/searchslice";
 const Gptsearchbar = () => {
   const language = useSelector((store) => store.config.lang);
-
+  const searchresults = useSelector((store) => {
+    return store.searchmovie.getsearchmovie;
+  });
   const getText = useRef(null);
+  const dispatch = useDispatch();
 
   useSearchMovies();
 
   const handlesearchtext = () => {
     console.log(getText.current.value);
+    const result = getText.current.value;
     //Make an Api call to search movies in the api and get movie results;
+    dispatch(addquery(result));
+    // getText.current.value; //for clearing the input filed after searching the result;
   };
 
   return (
