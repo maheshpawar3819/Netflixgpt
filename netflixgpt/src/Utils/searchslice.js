@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchmovies = createSlice({
   name: "searchmovies",
   initialState: {
-    addsearchmovie: null,
+    addsearchmovie: [],
     query: "",
   },
   reducers: {
