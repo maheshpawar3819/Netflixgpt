@@ -3,11 +3,10 @@ import lang from "../Utils/languageconstants";
 import { useDispatch, useSelector } from "react-redux";
 import useSearchMovies from "../Hooks/useSearchMovies";
 import { addquery } from "../Utils/searchslice";
+import Gptmoviesuggestions from "./Gptmoviesuggestions";
 const Gptsearchbar = () => {
   const language = useSelector((store) => store.config.lang);
-  const searchresults = useSelector((store) => {
-    return store.searchmovie.getsearchmovie;
-  });
+
   const getText = useRef(null);
   const dispatch = useDispatch();
 
@@ -16,13 +15,12 @@ const Gptsearchbar = () => {
   const handlesearchtext = () => {
     console.log(getText.current.value);
     const result = getText.current.value;
-    //Make an Api call to search movies in the api and get movie results;
-    dispatch(addquery(result));
 
-    // getText.current.value; //for clearing the input filed after searching the result;
+    dispatch(addquery(result));
   };
 
   return (
+    <>
     <div className="pt-[10%] flex justify-center">
       <form
         action=""
@@ -45,6 +43,10 @@ const Gptsearchbar = () => {
         </button>
       </form>
     </div>
+    <div>
+    <Gptmoviesuggestions/>
+    </div>
+    </>
   );
 };
 
