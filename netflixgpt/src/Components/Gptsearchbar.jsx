@@ -18,6 +18,7 @@ const Gptsearchbar = () => {
     const result = getText.current.value;
     //Make an Api call to search movies in the api and get movie results;
     dispatch(addquery(result));
+
     // getText.current.value; //for clearing the input filed after searching the result;
   };
 
