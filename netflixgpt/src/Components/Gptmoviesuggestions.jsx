@@ -9,16 +9,10 @@ const Gptmoviesuggestions = () => {
   );
 
   return (
-    <div className="flex flex-col-reverse">
+    <div className=" bg-black movie-list flex overflow-x-auto space-x-4 m-7 rounded-lg mt-12 bg-opacity-85">
       {getsearchmovie && getresultmovies.length > 0 ? (
         getresultmovies.map((ele) => {
-          return (
-            <Searchmoviecard
-              key={ele.id}
-              poster_path={ele.poster_path}
-              original_title={ele.original_title}
-            />
-          );
+          return <Searchmoviecard key={ele.id} poster_path={ele.poster_path} />;
         })
       ) : (
         <h1></h1>

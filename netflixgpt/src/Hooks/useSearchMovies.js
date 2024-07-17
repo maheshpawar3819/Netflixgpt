@@ -11,12 +11,11 @@ const useSearchMovies = () => {
   useEffect(() => {
     if (query) {
       const searchMoviesApicall = () => {
-        const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+        const url = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&language=en-US&page=1`;
         // console.log("Request URL:", url);
         axios
           .get(url, apikey) // Correctly pass the headers
           .then((response) => {
-            console.log("API Response:", response?.data);
             dispatch(getsearchmovie(response?.data?.results));
           })
           .catch((error) => {
@@ -25,7 +24,7 @@ const useSearchMovies = () => {
       };
       searchMoviesApicall();
     }
-  }, [query,dispatch]);
+  }, [query, dispatch]);
 };
 
 export default useSearchMovies;

@@ -6,7 +6,6 @@ import { addquery } from "../Utils/searchslice";
 import Gptmoviesuggestions from "./Gptmoviesuggestions";
 const Gptsearchbar = () => {
   const language = useSelector((store) => store.config.lang);
-
   const getText = useRef(null);
   const dispatch = useDispatch();
 
