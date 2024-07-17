@@ -1,6 +1,5 @@
 import React from "react";
 import Gptsearchbar from "./Gptsearchbar";
-import Gptmoviesuggestions from "./Gptmoviesuggestions";
 import { logoheader } from "../Utils/logoimg";
 const Gptsearch = () => {
   return (
@@ -9,7 +8,6 @@ const Gptsearch = () => {
         <img src={logoheader} alt="background" />
       </div>
       <Gptsearchbar />
-      <Gptmoviesuggestions />
     </div>
   );
 };

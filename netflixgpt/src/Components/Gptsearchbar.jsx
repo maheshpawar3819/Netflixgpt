@@ -13,39 +13,37 @@ const Gptsearchbar = () => {
   useSearchMovies();
 
   const handlesearchtext = () => {
-    console.log(getText.current.value);
     const result = getText.current.value;
-
     dispatch(addquery(result));
   };
 
   return (
     <>
-    <div className="pt-[10%] flex justify-center">
-      <form
-        action=""
-        className=" w-1/2 grid grid-cols-12 bg-black"
-        onSubmit={(e) => {
-          return e.preventDefault();
-        }}
-      >
-        <input
-          ref={getText}
-          type="text"
-          className="p-4 m-4 col-span-9 rounded-lg"
-          placeholder={lang[language].gptsearchplaceholder}
-        />
-        <button
-          className="py-2 px-4 m-4 col-span-3 bg-red-700 hover:bg-red-600 text-white rounded-lg"
-          onClick={handlesearchtext}
+      <div className="pt-[10%] flex justify-center">
+        <form
+          action=""
+          className=" w-1/2 grid grid-cols-12 bg-black"
+          onSubmit={(e) => {
+            return e.preventDefault();
+          }}
         >
-          {lang[language].search}
-        </button>
-      </form>
-    </div>
-    <div>
-    <Gptmoviesuggestions/>
-    </div>
+          <input
+            ref={getText}
+            type="text"
+            className="p-4 m-4 col-span-9 rounded-lg"
+            placeholder={lang[language].gptsearchplaceholder}
+          />
+          <button
+            className="py-2 px-4 m-4 col-span-3 bg-red-700 hover:bg-red-600 text-white rounded-lg"
+            onClick={handlesearchtext}
+          >
+            {lang[language].search}
+          </button>
+        </form>
+      </div>
+      <div>
+        <Gptmoviesuggestions />
+      </div>
     </>
   );
 };
