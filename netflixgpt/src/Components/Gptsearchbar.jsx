@@ -15,7 +15,7 @@ const Gptsearchbar = () => {
     const result = getText.current.value;
     dispatch(addquery(result));
   };
-
+  
   return (
     <>
       <div className="pt-[10%] flex justify-center">
