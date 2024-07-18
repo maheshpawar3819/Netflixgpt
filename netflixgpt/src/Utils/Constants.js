@@ -12,3 +12,11 @@ export const Supportedlanguages = [
   { identifier: "tamil", name: "Tamil" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const bgvideosrc_front = "https://www.youtube.com/embed/";
+export const bgvideosrc_back = "?&autoplay=1&mute=1";
+
+export const youtubevTitle = "YouTube video player";
+
+export const youtubevallow =
+  "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
