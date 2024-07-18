@@ -7,11 +7,11 @@ const Body = () => {
   const approuter = createBrowserRouter([
     {
       path: "/",
-      element: <Login />,
+      element: <Browse />,
     },
     {
-      path: "/browse",
-      element: <Browse />,
+      path: "/login",
+      element: <Login />,
     },
   ]);
 
