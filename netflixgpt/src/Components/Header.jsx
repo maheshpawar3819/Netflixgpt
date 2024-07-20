@@ -18,10 +18,10 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute flex px-8 py-5 top-0 bottom-0 bg-gradient-to-b from-black w-full z-30 h-20 justify-between">
-      <img src={netflixlogo} className="w-32" alt="" />
+    <div className="absolute b flex px-8 py-5 top-0 bottom-0 bg-gradient-to-b from-black w-full z-30 h-20  md:justify-between flex-col md:flex-row">
+      <img src={netflixlogo} className="w-32 mx-auto md:mx-0" alt="" />
 
-      <div>
+      <div className="mx-auto md:mx-0 ">
         {showGptsearch && (
           <select
             className="bg-black hover:bg-gray-700 font-bold p-2 mr-10 rounded-md text-white cursor-pointer"
@@ -37,7 +37,7 @@ const Header = () => {
           </select>
         )}
         <button
-          className="bg-slate-600 p-2 rounded-md  text-white hover:text-red-400 hover:bg-slate-900"
+          className="bg-slate-600 p-2 rounded-md  text-white hover:text-red-400 hover:bg-slate-900 mt-4 md:mt-0 "
           onClick={handleGptsearchclick}
         >
           {showGptsearch ? "Homepage" : "Gpt Search"}
