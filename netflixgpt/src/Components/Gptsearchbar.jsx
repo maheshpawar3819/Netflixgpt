@@ -6,16 +6,15 @@ import { addquery } from "../Utils/searchslice";
 import Gptmoviesuggestions from "./Gptmoviesuggestions";
 const Gptsearchbar = () => {
   const language = useSelector((store) => store.config.lang);
+  useSearchMovies();
   const getText = useRef(null);
   const dispatch = useDispatch();
-
-  useSearchMovies();
 
   const handlesearchtext = () => {
     const result = getText.current.value;
     dispatch(addquery(result));
   };
-  
+
   return (
     <>
       <div className="pt-[35%] md:pt-40 flex justify-center">
