@@ -3,6 +3,7 @@ import Login from "./Login";
 import Browse from "./Browse";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
+import Register from "./Register";
 const Body = () => {
   const approuter = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ const Body = () => {
       path: "/login",
       element: <Login />,
     },
+    {
+      path: "/register",
+      element:<Register/>
+    }
   ]);
 
   return (

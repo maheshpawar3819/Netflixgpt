@@ -19,3 +19,5 @@ export const youtubevTitle = "YouTube video player";
 
 export const youtubevallow =
   "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+export const geminiApi=process.env.REACT_APP_JEMINA_API_KEY;
