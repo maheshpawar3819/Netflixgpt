@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import { logoheader } from "../Utils/logoimg";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -18,12 +19,6 @@ const Login = () => {
 
         <input
           type="text"
-          placeholder="Full Name"
-          className="p-4 w-full  bg-gray-900 text-white rounded-sm"
-        />
-
-        <input
-          type="text"
           placeholder="Enter your e-mail"
           className="p-4 my-5 w-full bg-gray-900 text-white rounded-sm"
         />
@@ -38,7 +33,7 @@ const Login = () => {
           Login 
         </button>
         <p className="text-white my-3 cursor-pointer py-3">
-          "New to Netflix? Sign up now"
+         <Link to={"/register"}> "New to Netflix? Sign up now"</Link>
         </p>
       </form>
     </div>
