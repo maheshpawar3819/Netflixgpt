@@ -60,4 +60,52 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+//for login user
+const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    //check fields are fullfill or not
+    if (!email || !password) {
+      return res.status(401).json({ message: `Plese fill all fields` });
+    }
+
+    //check emil is or not
+    const isExist = await prisma.user.findFirst({
+      where: { email },
+    });
+
+    if (!isExist) {
+      return res.status(401).json({ message: `This email is not exist` });
+    }
+
+    //compare password
+    const isPasswordValid = await bcrypt.compare(password, isExist.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        message: `Invalid Email and Password`,
+      });
+    }
+
+    //generate json webtoken
+    const token = jwt.sign({ id: isExist.id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+
+    //sending response with token
+    res.status(200).json({
+      message: `User Login Successfully`,
+      token,
+      user: {
+        id: isExist.id,
+        name: isExist.name,
+        email: isExist.email,
+      },
+    });
+  } catch (error) {
+    res.status(401).json({
+      message: `Internal server error`,
+    });
+  }
+};
+
+module.exports = { registerUser, loginUser };
