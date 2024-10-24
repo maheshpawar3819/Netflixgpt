@@ -4,20 +4,29 @@ import Browse from "./Browse";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import Register from "./Register";
+import PrivateRoute from "./PrivateRoute";
+import NotFound from "./NotFound";
 const Body = () => {
   const approuter = createBrowserRouter([
     {
       path: "/",
       element: <Login />,
-    },
-    {
-      path: "/browse",
-      element: <Browse />,
+      errorElement: <NotFound />,
     },
     {
       path: "/register",
-      element:<Register/>
-    }
+      element: <Register />,
+      errorElement: <NotFound />,
+    },
+    {
+      path: "/browser",
+      element: (
+        <PrivateRoute>
+          <Browse />
+        </PrivateRoute>
+      ),
+      errorElement: <NotFound />,
+    },
   ]);
 
   return (

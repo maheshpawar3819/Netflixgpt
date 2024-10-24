@@ -42,7 +42,7 @@ const Login = () => {
         localStorage.setItem("token", response?.data?.token);
         dispatch(login(response?.data?.user));
         alert("user logged in successfull");
-        navigate("/");
+        navigate("/browser");
       }
     } catch (error) {
       console.error("Something wrong");
