@@ -24,7 +24,7 @@ const Login = () => {
     });
   };
 
-  console.log(user);
+  // console.log(user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     //destructure state variables
@@ -38,6 +38,7 @@ const Login = () => {
         }
       );
 
+      console.log(response)
       if (response.status >= 200) {
         localStorage.setItem("token", response?.data?.token);
         dispatch(login(response?.data?.user));
@@ -45,7 +46,7 @@ const Login = () => {
         navigate("/browser");
       }
     } catch (error) {
-      console.error("Something wrong");
+      console.log("Something wrong");
     }
   };
 
@@ -88,6 +89,7 @@ const Login = () => {
         <p className="text-white my-3 cursor-pointer py-3">
           <Link to={"/register"}> New to Netflix? Sign up now </Link>
         </p>
+        <p className="text-red-600">Invalid Emailid Password</p>
       </form>
     </div>
   );

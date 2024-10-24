@@ -13,7 +13,7 @@ const Header = () => {
   const showGptsearch = useSelector((store) => store.gpt.showsearchsearch);
   const getUser = useSelector((store) => store.auth.user);
   const navigate=useNavigate();
-  console.log(getUser);
+  // console.log(getUser);
 
   const handleGptsearchclick = () => {
     dispatch(toggleGptsearchview());
