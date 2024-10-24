@@ -59,7 +59,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         className="bg-black relative p-12 w-3/12 mx-auto top-44 offset rounded-sm bg-opacity-85"
       >
-        <p className="text-white text-4xl font-bold mb-4">Login</p>
+        <p className="text-white text-4xl font-bold mb-4 text-center">Login</p>
         <br />
 
         <input

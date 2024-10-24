@@ -41,7 +41,7 @@ const Register = () => {
       console.log(response);
       if (response.status >= 200) {
         alert("Successfully Register");
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       console.error(`not able to call api`);
@@ -106,7 +106,7 @@ const Register = () => {
           Register
         </button>
         <p className="text-white my-3 cursor-pointer py-3">
-          <Link to={"/login"}>Already Have Account? Login now</Link>
+          <Link to={"/"}>Already Have Account? Login now</Link>
         </p>
       </form>
     </div>
