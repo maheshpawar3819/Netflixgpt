@@ -11,6 +11,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [error,setError]=useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -24,10 +25,8 @@ const Login = () => {
     });
   };
 
-  // console.log(user);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //destructure state variables
     const { email, password } = user;
     try {
       const response = await axios.post(
@@ -38,58 +37,68 @@ const Login = () => {
         }
       );
 
-      console.log(response)
+      console.log(response);
       if (response.status >= 200) {
         localStorage.setItem("token", response?.data?.token);
         dispatch(login(response?.data?.user));
-        alert("user logged in successfull");
+        alert("User logged in successfully");
         navigate("/browser");
       }
     } catch (error) {
-      console.log("Something wrong");
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        alert("Faild to login");
+      }
     }
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900">
       <Header />
-      <div className="absolute">
-        <img src={logoheader} alt="background" />
+      <div className="absolute inset-0">
+        <img
+          src={logoheader}
+          alt="background"
+          className="w-full h-full object-cover opacity-30"
+        />
       </div>
       <form
         onSubmit={handleSubmit}
-        className="bg-black relative p-12 w-3/12 mx-auto top-44 offset rounded-sm bg-opacity-85"
+        className="relative bg-black p-8 sm:p-12 w-11/12 md:w-8/12 lg:w-5/12 xl:w-3/12 mx-auto top-0 md:top-20 rounded-md bg-opacity-90 shadow-lg"
       >
-        <p className="text-white text-4xl font-bold mb-4 text-center">Login</p>
-        <br />
-
+        <p className="text-white text-3xl sm:text-4xl font-bold mb-6 text-center">Login</p>
         <input
           type="text"
           value={user.email}
           name="email"
           placeholder="Enter your e-mail"
-          className="p-4 my-5 w-full bg-gray-900 text-white rounded-sm"
+          className="p-4 my-3 sm:my-5 w-full bg-gray-800 text-white rounded-md"
           onChange={handleInput}
           required
         />
-        <br />
         <input
           type="password"
           placeholder="Password"
           value={user.password}
           name="password"
-          className="p-4 w-full mb-5 bg-gray-900 text-white rounded-sm"
+          className="p-4 mb-4 sm:mb-5 w-full bg-gray-800 text-white rounded-md"
           onChange={handleInput}
           required
         />
-        <p className="text-red-500 font-bold py-2"></p>
-        <button className="bg-red-600 hover:bg-red-800 w-full p-2 rounded-sm font-bold text-white tracking-wide">
+        <button className="bg-red-600 hover:bg-red-800 w-full p-3 sm:p-4 rounded-md font-bold text-white tracking-wide transition duration-300">
           Login
         </button>
-        <p className="text-white my-3 cursor-pointer py-3">
-          <Link to={"/register"}> New to Netflix? Sign up now </Link>
+        <p className="text-white text-center my-3">
+          <Link to={"/register"} className="hover:underline">
+            New to Netflix? Sign up now
+          </Link>
         </p>
-        <p className="text-red-600">Invalid Emailid Password</p>
+        <p className="text-red-600 text-center mt-2">{error}</p>
       </form>
     </div>
   );

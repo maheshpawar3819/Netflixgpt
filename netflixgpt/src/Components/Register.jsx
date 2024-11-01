@@ -11,6 +11,7 @@ const Register = () => {
     password: "",
     confirmpassword: "",
   });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleInput = (e) => {
@@ -23,10 +24,8 @@ const Register = () => {
     });
   };
 
-  //send form to backend for store in the database
   const registerUser = async (e) => {
     e.preventDefault();
-    //destructure state variables
     const { name, email, password, confirmpassword } = user;
     try {
       const response = await axios.post(
@@ -40,34 +39,45 @@ const Register = () => {
       );
       console.log(response);
       if (response.status >= 200) {
-        alert("Successfully Register");
+        alert("Successfully Registered");
         navigate("/");
       }
     } catch (error) {
-      console.error(`not able to call api`);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        alert("Faild to login");
+      }
     }
   };
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900">
       <Header />
-      <div className="absolute">
-        <img src={logoheader} alt="background" />
+      <div className="absolute inset-0">
+        <img
+          src={logoheader}
+          alt="background"
+          className="w-full h-full object-cover opacity-30"
+        />
       </div>
       <form
-        className="bg-black relative p-12 w-[30%] mx-auto top-32 offset rounded-sm bg-opacity-85"
+        className="relative bg-black p-8 sm:p-12 w-11/12 md:w-8/12 lg:w-6/12 xl:w-4/12 mx-auto top-0 md:top-20 rounded-md bg-opacity-90 shadow-lg"
         onSubmit={registerUser}
       >
-        <p className="text-white text-4xl font-bold mb-4 text-center">
+        <p className="text-white text-3xl sm:text-4xl font-bold mb-6 text-center">
           Register
         </p>
-        <br />
 
         <input
           type="text"
           name="name"
           placeholder="Full Name"
-          className="p-4 w-full  bg-gray-900 text-white rounded-sm"
+          className="p-4 w-full mb-4 bg-gray-800 text-white rounded-md"
           value={user.name}
           required
           onChange={handleInput}
@@ -77,37 +87,41 @@ const Register = () => {
           type="text"
           name="email"
           placeholder="Enter your e-mail"
-          className="p-4 my-5 w-full bg-gray-900 text-white rounded-sm"
+          className="p-4 w-full mb-4 bg-gray-800 text-white rounded-md"
           value={user.email}
           required
           onChange={handleInput}
         />
-        <br />
+
         <input
           type="password"
           name="password"
           placeholder="Password"
-          className="p-4 w-full mb-5 bg-gray-900 text-white rounded-sm"
+          className="p-4 w-full mb-4 bg-gray-800 text-white rounded-md"
           value={user.password}
           required
           onChange={handleInput}
         />
+
         <input
           type="password"
           name="confirmpassword"
           placeholder="Confirm Password"
-          className="p-4 w-full mb-5 bg-gray-900 text-white rounded-sm"
+          className="p-4 w-full mb-5 bg-gray-800 text-white rounded-md"
           value={user.confirmpassword}
           required
           onChange={handleInput}
         />
-        <p className="text-red-500 font-bold py-2"></p>
-        <button className="bg-red-600 hover:bg-red-800 w-full p-2 rounded-sm font-bold text-white tracking-wide">
+
+        <button className="bg-red-600 hover:bg-red-800 w-full p-3 sm:p-4 rounded-md font-bold text-white tracking-wide transition duration-300">
           Register
         </button>
-        <p className="text-white my-3 cursor-pointer py-3">
-          <Link to={"/"}>Already Have Account? Login now</Link>
+        <p className="text-white text-center mt-4 cursor-pointer">
+          <Link to={"/"} className="hover:underline">
+            Already Have an Account? Login now
+          </Link>
         </p>
+        <p className="text-red-600 text-center mt-2">{error}</p>
       </form>
     </div>
   );
